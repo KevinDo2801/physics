@@ -19,7 +19,7 @@ const Camera = ({ showText, setShowText }) => {
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           videoConstraints={{
-            facingMode: "user",
+            facingMode: "environment",
           }}
           className="webcam"
         />
