@@ -3,11 +3,11 @@ import Webcam from 'react-webcam';
 
 const Camera = () => {
   const webcamRef = useRef(null);
-  const [images, setImages] = useState([]); 
+  const [images, setImages] = useState([]);
 
   const capture = React.useCallback(() => {
     const capturedImage = webcamRef.current.getScreenshot();
-    setImages([capturedImage, ...images]); 
+    setImages([capturedImage, ...images]);
   }, [webcamRef, images]);
 
   return (
@@ -17,9 +17,9 @@ const Camera = () => {
         ref={webcamRef}
         screenshotFormat="image/jpeg"
         videoConstraints={{
-          width: 228,
-          height: 100,
-          facingMode: "user"
+          width: 1280,
+          height: 720,
+          facingMode: "environment" 
         }}
       />
       <button onClick={capture}>Capture photo</button>
