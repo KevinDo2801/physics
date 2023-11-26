@@ -66,7 +66,7 @@ const Camera = ({ showText, setShowText }) => {
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          videoConstraints={{ facingMode: "user" }}
+          videoConstraints={{ facingMode: "environment" }}
           className="webcam"
         />
         <div className="overlay" onClick={capture}></div>
