@@ -7,9 +7,9 @@
 .display{
     width: 100%;
     height: 114px;
-    border: 1px solid #D2E0E1;
+    border: 1px solid #c1c1c1;
     border-radius: 5px;
-    background-color: #D2E0E1;
+    background-color: #c1c1c1;
     margin-bottom: 10rem;
     padding: 5px;
 }
@@ -22,20 +22,21 @@ p{
 
 .camera{
     position: relative;
+    margin-bottom: 5rem;
+}
+
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(193, 193, 193, 0.7);
 }
 
 .webcam{
     width: 100%;
     height: 338px;
     border-radius: 5px;
-}
-
-.button_capture{
-    position: absolute;
-    top: 6px;
-    right: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
 }
