@@ -77,7 +77,7 @@ const Camera = ({ showText, setShowText }) => {
       </div>
 
       <div>
-        {[...images].map((imgSrc, index) => (
+        {images.map((imgSrc, index) => (
           <img
             key={index}
             src={imgSrc.url}
