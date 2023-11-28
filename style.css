@@ -6,7 +6,7 @@
 
 .display{
     width: 100%;
-    height: 338px;
+    height: 150px;
     border: 1px solid #c1c1c1;
     border-radius: 5px;
     background-color: #c1c1c1;
@@ -37,6 +37,6 @@ p{
 
 .webcam{
     width: 100%;
-    height: 338px;
+    height: 150px;
     border-radius: 5px;
 }

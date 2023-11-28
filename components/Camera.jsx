@@ -81,10 +81,10 @@ const Camera = ({ showText, setShowText }) => {
           <img
             key={index}
             src={imgSrc.url}
-            alt={`Captured ${images.length - index - 1}`}
+            alt={`Captured ${index}`}
             style={{ margin: "10px" }}
             onDoubleClick={() =>
-              handleImageDoubleClick(images.length - index - 1)
+              handleImageDoubleClick(index)
             }
           />
         ))}
