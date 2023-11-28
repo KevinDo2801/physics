@@ -28,7 +28,10 @@ const Camera = ({ showText, setShowText }) => {
         const data = snapshot.val();
         if (data) {
           // Convert the data from object to array
-          const fetchedImages = Object.entries(data).map(([key, url]) => ({ key, url }));
+          const fetchedImages = Object.entries(data).map(([key, url]) => ({
+            key,
+            url,
+          }));
           setImages(fetchedImages);
         }
       });
@@ -51,8 +54,8 @@ const Camera = ({ showText, setShowText }) => {
     const imageToRemove = images[indexToRemove];
     if (imageToRemove && imageToRemove.key) {
       const imgRef = ref(getDatabase(), `imgPhy/${imageToRemove.key}`);
-      remove(imgRef); 
-  
+      remove(imgRef);
+
       setImages((prevImages) =>
         prevImages.filter((_, index) => index !== indexToRemove)
       );
@@ -66,8 +69,11 @@ const Camera = ({ showText, setShowText }) => {
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          videoConstraints={{ 
-            facingMode: "environment" }}
+          videoConstraints={{
+            width: 1280,
+            height: 720,
+            facingMode: "environment",
+          }}
           className="webcam"
           screenshotQuality={1}
         />
@@ -81,7 +87,9 @@ const Camera = ({ showText, setShowText }) => {
             src={imgSrc.url}
             alt={`Captured ${images.length - index - 1}`}
             style={{ margin: "10px" }}
-            onDoubleClick={() => handleImageDoubleClick(images.length - index - 1)}
+            onDoubleClick={() =>
+              handleImageDoubleClick(images.length - index - 1)
+            }
           />
         ))}
       </div>
