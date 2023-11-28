@@ -58,18 +58,21 @@ const Camera = ({ showText, setShowText }) => {
     }
   };
 
+  const videoConstraints = {
+    width: { min: 1280, ideal: 1920, max: 2560 },
+    height: { min: 720, ideal: 1080, max: 1440 },
+    facingMode: "environment",
+  };
+
   return (
     <>
       <div className="camera" style={{ display: !showText ? "block" : "none" }}>
         <Webcam
           audio={false}
           ref={webcamRef}
+          videoConstraints={videoConstraints}
           screenshotFormat="image/jpeg"
-          videoConstraints={{
-            width: 1280,
-            height: 720,
-            facingMode: "environment",
-          }}
+          screenshotQuality={1}
           className="webcam"
         />
         <div className="overlay" onClick={capture}></div>
@@ -82,9 +85,7 @@ const Camera = ({ showText, setShowText }) => {
             src={imgSrc.url}
             alt={`Captured ${index}`}
             style={{ margin: "10px" }}
-            onDoubleClick={() =>
-              handleImageDoubleClick(index)
-            }
+            onDoubleClick={() => handleImageDoubleClick(index)}
           />
         ))}
       </div>
