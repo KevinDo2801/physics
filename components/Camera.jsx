@@ -71,7 +71,6 @@ const Camera = ({ showText, setShowText }) => {
             facingMode: "environment",
           }}
           className="webcam"
-          screenshotQuality={1}
         />
         <div className="overlay" onClick={capture}></div>
       </div>
