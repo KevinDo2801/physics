@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDJ39dqHQZn7FjjWl6kj-K5q_tWmyldMPs",
@@ -18,14 +18,13 @@ function Display({ showText, setShowText }) {
   const [displayText, setDisplayText] = useState("");
 
   const database = getDatabase();
-  const textRef = ref(database, 'texts/');
+  const textRef = ref(database, "currentText/"); 
 
   useEffect(() => {
     onValue(textRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        const lastKey = Object.keys(data).pop();
-        setDisplayText(data[lastKey]);
+      if (data !== null) {
+        setDisplayText(data);
       }
     });
   }, []);
@@ -35,7 +34,7 @@ function Display({ showText, setShowText }) {
   };
 
   const handleButtonClick = () => {
-    push(textRef, inputValue);
+    set(textRef, inputValue);
     setInputValue("");
   };
 
@@ -46,9 +45,7 @@ function Display({ showText, setShowText }) {
   return (
     <div style={{ display: showText ? "block" : "none" }}>
       <div className="display" onClick={camera_capture}>
-        <p className="top">
-          {displayText}
-        </p>
+        <p className="top">{displayText}</p>
       </div>
 
       <div className="answer">
