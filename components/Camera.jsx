@@ -79,13 +79,15 @@ const Camera = ({ showText, setShowText }) => {
       </div>
 
       <div>
-        {images.map((imgSrc, index) => (
+        {[...images].reverse().map((imgSrc, index) => (
           <img
             key={index}
             src={imgSrc.url}
-            alt={`Captured ${index}`}
+            alt={`Captured ${images.length - index - 1}`}
             style={{ margin: "10px" }}
-            onDoubleClick={() => handleImageDoubleClick(index)}
+            onDoubleClick={() =>
+              handleImageDoubleClick(images.length - index - 1)
+            }
           />
         ))}
       </div>
