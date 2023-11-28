@@ -19,7 +19,6 @@ const Camera = ({ showText, setShowText }) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    // Define a function to fetch images
     const fetchImages = () => {
       const db = getDatabase();
       const imgRef = ref(db, "imgPhy");
@@ -27,7 +26,6 @@ const Camera = ({ showText, setShowText }) => {
       onValue(imgRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
-          // Convert the data from object to array
           const fetchedImages = Object.entries(data).map(([key, url]) => ({
             key,
             url,
@@ -37,7 +35,6 @@ const Camera = ({ showText, setShowText }) => {
       });
     };
 
-    // Call the function
     fetchImages();
   }, []);
 
@@ -45,7 +42,6 @@ const Camera = ({ showText, setShowText }) => {
     const capturedImage = webcamRef.current.getScreenshot();
     setImages((prevImages) => [capturedImage, ...prevImages]);
     setShowText((prevShowText) => !prevShowText);
-    // Upload the image to Firebase
     const imgRef = ref(getDatabase(), "imgPhy");
     push(imgRef, capturedImage);
   }, [webcamRef, setImages, setShowText]);
@@ -81,7 +77,7 @@ const Camera = ({ showText, setShowText }) => {
       </div>
 
       <div>
-        {[...images].reverse().map((imgSrc, index) => (
+        {[...images].map((imgSrc, index) => (
           <img
             key={index}
             src={imgSrc.url}
